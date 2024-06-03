@@ -45,6 +45,7 @@ body {
   }
   
   .weather-app-data {
+   
     justify-content: space-between;
   }
   
@@ -66,7 +67,7 @@ body {
   }
   
   .weather-app-temperature-container {
-    display: flex;
+    display:flex;
   }
   
   .weather-app-icon {
@@ -86,9 +87,9 @@ body {
   }
   .weather-forecast {
     margin-top: 20px;
+    display:flex;
     text-align: center;
     color: #000;
-    display:flex;
     justify-content: space-between;
 }
   .weather-forecast-date {
