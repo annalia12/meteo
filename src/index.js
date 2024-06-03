@@ -88,4 +88,3 @@ let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${api
   forecastElement.innerHTML=forecastHtml;
 }
 searchCity("Paris");
-getForecast ("Paris");
