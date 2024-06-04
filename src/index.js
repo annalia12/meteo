@@ -67,24 +67,38 @@ let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${api
   function displayForecast(response) {
     console.log(response.data);
 
-    let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
-  let forecastHtml= "";
-    days.forEach(function (day) {
-      forecastHtml = forecastHtml+
- `
-<div class="weather-forecast-day">
-        <div class="weather-forecast-date">${day}</div>
-        <div class="weather-forecast-icon">🌤️</div>
-        <div class="weather-forecast-temperatures">
-          <div class="weather-forecast-temperature">
-            <strong>15º</strong>
+    let forecast = response.data.daily;
+
+
+    let forecastHTML = `<div class="row">`;
+    forecast.forEach(function (forecastDay, index) {
+      if (index < 6) {
+        forecastHTML =
+          forecastHTML +
+          `
+        <div class="col-2">
+          <div class="weather-forecast-date">${formatDay(forecastDay.time)}</div>
+          <img src="${
+              forecastDay.condition.icon_url
+            }"
+            alt=""
+            width="42"
+          />
+          <div class="weather-forecast-temperatures">
+            <span class="weather-forecast-temperature-max"> ${Math.round(
+              forecastDay.temperature.maximum
+            )}° </span>
+            <span class="weather-forecast-temperature-min"> ${Math.round(
+              forecastDay.temperature.minimum
+            )}° </span>
           </div>
-          <div class="weather-forecast-temperature">9º</div>
         </div>
-      </div>
     `;
-  });
+      }
+    });
+  
+    forecastHTML = forecastHTML + `</div>`;
   let forecastElement = document.querySelector("#forecast");
-  forecastElement.innerHTML=forecastHtml;
+  forecastElement.innerHTML=forecastHTML;
 }
 searchCity("Paris");
