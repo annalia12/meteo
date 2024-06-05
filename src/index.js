@@ -55,8 +55,7 @@ function handleSearchSubmit(event) {
 
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
-
-
+ 
 function getForecast(city){
 let apiKey= "b2a5adcct04b33178913oc335f405433";
 let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}`;
@@ -70,6 +69,7 @@ function formatDay(timestamp) {
 
   return days[day];
 }
+
 
 function displayForecast(response) {
   console.log(response.data);
@@ -109,10 +109,4 @@ let forecastElement = document.querySelector("#forecast");
 forecastElement.innerHTML=forecastHTML;
 }
 searchCity("Paris");
-
-
-
-
-
-
 
